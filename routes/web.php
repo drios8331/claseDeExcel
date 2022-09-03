@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\BodegasController;
+use App\Http\Controllers\CarrosController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductorasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', HomeController::class)->name('home');
+
+Route::get('carros', [CarrosController::class, 'viewCarros'])->name('carros');
+Route::get('productoras', [ProductorasController::class, 'viewProductoras'])->name('productoras');
+Route::get('bodegas', [BodegasController::class, 'viewBodegas'])->name('bodegas');
