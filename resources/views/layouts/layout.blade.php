@@ -29,25 +29,6 @@
     <!-- Our CSS -->
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
 
-
-
-    {{-- <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style> --}}
-
-
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
 </head>
@@ -79,6 +60,12 @@
                             <a class="nav-link" aria-current="page" href="{{Route('home')}}">
                                 <span data-feather="home"></span>
                                 Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{Route('reservas')}}">
+                                <span data-feather="file"></span>
+                                Reservas
                             </a>
                         </li>
                         <li class="nav-item">
