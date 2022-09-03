@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
+    <link rel="icon" href="{{ asset('/images/RENAULT_ICO_ROUND.ico') }}" />
     <title>@yield('title')</title>
 
     <!-- JQuery -->
@@ -29,27 +30,6 @@
     <!-- Our CSS -->
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
 
-
-
-    {{-- <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style> --}}
-
-
-    <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
 </head>
 
 <body class="">
@@ -57,7 +37,7 @@
     <div class="loader-page"></div>
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 py-2 fs-4" href="#"><span><img class="img-fluid" src="{{asset('/images/RENAULT_LOGO.webp')}}" width="30" height="30" alt=""></span>&nbsp;&nbsp;<b>RENAULT</b></a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -119,7 +99,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
     </script>
-    <script src="dashboard.js"></script>
 </body>
 
 </html>
