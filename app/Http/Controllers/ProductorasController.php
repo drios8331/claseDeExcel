@@ -10,4 +10,12 @@ class ProductorasController extends Controller
 
         return view('productoras');
     }
+
+    public function createProductora(){
+        
+    }
+
+    public function showProductora($productora){
+        
+    }
 }
