@@ -27,7 +27,14 @@
                                     <tr>
                                         <td class="text-center">{{ $item->idProductora }}</td>
                                         <td class="text-center">{{ $item->nombreProductora }}</td>
-                                        <td class="text-center"></td>
+                                        <td class="text-center">
+                                            <button class="btn btn-outline-primary btn-sm" id="btn_info_producto" value="">
+                                                <i class="bi bi-info-square" style="pointer-events: none;"></i>
+                                            </button>
+                                            <button class="btn btn-outline-primary btn-sm" id="btn_editar_producto" value="">
+                                                <i class="bi bi-pencil-square" style="pointer-events: none;"></i>
+                                            </button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -48,7 +55,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">No</th>
-                                    <th class="text-center">Empresa</th>
+                                    <th class="text-center">Bodega</th>
+                                    <th class="text-center">Ciudad</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
@@ -57,7 +65,15 @@
                                     <tr>
                                         <td class="text-center">{{ $item->idProductora }}</td>
                                         <td class="text-center">{{ $item->nombreProductora }}</td>
-                                        <td class="text-center"></td>
+                                        <td class="text-center">{{ $item->nombreProductora }}</td>
+                                        <td class="text-center">
+                                            <button class="btn btn-outline-primary btn-sm" id="btn_info_producto" value="">
+                                                <i class="bi bi-info-square" style="pointer-events: none;"></i>
+                                            </button>
+                                            <button class="btn btn-outline-primary btn-sm" id="btn_editar_producto" value="">
+                                                <i class="bi bi-pencil-square" style="pointer-events: none;"></i>
+                                            </button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
