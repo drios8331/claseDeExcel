@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BodegasController;
 use App\Http\Controllers\CarrosController;
+use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductorasController;
 use App\Http\Controllers\ReservasController;
@@ -25,12 +26,12 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('carros', [CarrosController::class, 'viewCarros'])->name('carros');
 
 //Productoras
-Route::get('productoras', [ProductorasController::class, 'viewProductoras'])->name('productoras');
-Route::post('productoras', [ProductorasController::class, 'createProductoras'])->name('productoras.create');
+Route::get('configuracion', [ConfiguracionController::class, 'viewConfiguracion'])->name('configuracion');
+// Route::post('configuracion', [ConfiguracionController::class, 'createProductoras'])->name('productoras.create');
 // Route::get("productoras/{'id'}", [ProductorasController::class, 'showProductoras'])->name('productoras.show');
 
 //Bodegas
 Route::get('bodegas', [BodegasController::class, 'viewBodegas'])->name('bodegas');
 
 //Reservas
-Route::get('reservas', [ReservasController::class, 'viewReservas'])->name('reservas');
+// Route::get('reservas', [ReservasController::class, 'viewReservas'])->name('reservas');

@@ -1,0 +1,85 @@
+@extends('layouts.layout')
+
+@section('title', 'Configuracion')
+
+@section('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+@endsection
+
+@section('content')
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">Empresas productoras</div>
+                    <div class="card-body">
+                        <table class="table table-hover table-sm display" id="tableEmpresas" style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">Empresa</th>
+                                    <th class="text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($productora as $item)
+                                    <tr>
+                                        <td class="text-center">{{ $item->idProductora }}</td>
+                                        <td class="text-center">{{ $item->nombreProductora }}</td>
+                                        <td class="text-center"></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer p-0">
+                        <div class="d-grid">
+                            <button class="btn btn-primary">Agregar </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">Bodegas de almacenamiento</div>
+                    <div class="card-body">
+                        <table class="table table-hover table-sm display" id="tableBodegas" style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">Empresa</th>
+                                    <th class="text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($productora as $item)
+                                    <tr>
+                                        <td class="text-center">{{ $item->idProductora }}</td>
+                                        <td class="text-center">{{ $item->nombreProductora }}</td>
+                                        <td class="text-center"></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer p-0">
+                        <div class="d-grid">
+                            <button class="btn btn-primary">Agregar </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+@endsection
+
+@section('js')
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $('#tableEmpresas').DataTable();
+        $('#tableBodegas').DataTable();
+    </script>
+@endsection

@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ClientesModel extends Model
+class Carro extends Model
 {
     use HasFactory;
-    protected $table = 'tblClientes';
+    public $timestamps = false;
+    protected $table = 'tblcarros';
 }

@@ -18,8 +18,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <!-- Datatables-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" />
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script> --}}
+    @yield('css')
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
@@ -63,27 +64,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{Route('reservas')}}">
-                                <span data-feather="file"></span>
-                                Reservas
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{{Route('carros')}}">
                                 <span data-feather="file"></span>
                                 Carros
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{Route('productoras')}}">
+                            <a class="nav-link" href="{{Route('configuracion')}}">
                                 <span data-feather="shopping-cart"></span>
-                                Plantas Productoras
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{Route('bodegas')}}">
-                                <span data-feather="users"></span>
-                                Bodegas
+                                Configuracion
                             </a>
                         </li>
                     </ul>
@@ -99,7 +88,7 @@
 
 
     <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
-
+    @yield('js')
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
         integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
     </script>

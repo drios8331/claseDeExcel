@@ -9,6 +9,6 @@ class ReservasController extends Controller
     public function viewReservas(){
 
 
-        return view('reservas');
+        // return view('reservas');
     }
 }
