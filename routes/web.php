@@ -29,11 +29,12 @@ Route::get('carros', [CarrosController::class, 'viewCarros'])->name('carros');
 Route::get('configuracion', [ConfiguracionController::class, 'viewConfiguracion'])->name('configuracion');
 Route::post('configuracion/modalRegistroProductora', [ConfiguracionController::class, 'modalInsertarProductora'])->name('configuracion/modalRegistroProductora');
 Route::post('configuracion/create', [ConfiguracionController::class, 'createProductora'])->name('configuracion/create');
-// Route::get("productoras/{'id'}", [ProductorasController::class, 'showProductoras'])->name('productoras.show');
+Route::get("configuracion/{infoProductora}", [ConfiguracionController::class, 'editProductora'])->name("configuracion/edit");
 
 //Bodegas
-Route::get('bodegas', [BodegasController::class, 'viewBodegas'])->name('bodegas');
+// Route::get('configuracion', [BodegasController::class, 'viewBodegas'])->name('bodega');
 Route::post('configuracion/modalRegistroBodega', [ConfiguracionController::class, 'modalInsertarBodega'])->name('configuracion/modalRegistroBodega');
+Route::post('bodega/create', [ConfiguracionController::class, 'createBodega'])->name('bodega/create');
 
 //Reservas
 // Route::get('reservas', [ReservasController::class, 'viewReservas'])->name('reservas');
