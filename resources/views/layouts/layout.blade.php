@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
@@ -29,9 +30,6 @@
 
     <!-- Our CSS -->
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
-
-    <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
 </head>
 
 <body class="">
@@ -95,7 +93,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
     </script>
-    <script src="dashboard.js"></script>
 </body>
 
 </html>
