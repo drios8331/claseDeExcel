@@ -31,7 +31,7 @@ Route::post('configuracion/modalRegistroProductora', [ConfiguracionController::c
 Route::post("configuracion/create", [ConfiguracionController::class, 'createProductora']);
 Route::get("configuracion/{id}/info", [ConfiguracionController::class, 'infoProductora']);
 Route::get("configuracion/{id}/editProductora", [ConfiguracionController::class, 'editProductora']);
-Route::get("configuracion/{id}/update", [ConfiguracionController::class, 'Update']);
+Route::post("configuracion/{idProductora}", [ConfiguracionController::class, 'UpdateProductora']);
 
 //Bodegas
 Route::post('configuracion/modalRegistroBodega', [ConfiguracionController::class, 'modalInsertarBodega'])->name('configuracion/modalRegistroBodega');

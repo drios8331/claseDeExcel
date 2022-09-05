@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-        {{-- {{ route('configuracion.edit') }} --}}
+        
     </main>
 
 @endsection
@@ -191,6 +191,26 @@
                     success: function(response) {
                         console.log(e.target.value);
                         $("#respuesta").html(response);
+                    },
+                });
+            } else if (e.target.id === "btn_update_productora") {
+                $.ajaxSetup({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                });
+                const idProductora = $("#idProductora").val();
+                const nombre = $("#productora").val();
+                $.ajax({
+                    type: "POST",
+                    url: "configuracion/" + idProductora,
+                    data: {
+                        nombre: nombre,
+                    },
+                    success: function(data) {
+                        $("#respuesta").html(data);
                     },
                 });
             }

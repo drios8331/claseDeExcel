@@ -39,7 +39,7 @@ $(function () {
         }
     });
 
-    $(document).on("click", function(e) {
+    $(document).on("click", function (e) {
         if (e.target.id === "btn_insertar_productora") {
             $.ajaxSetup({
                 headers: {
@@ -53,14 +53,16 @@ $(function () {
                 type: "POST",
                 url: "configuracion/create",
                 data: {
-                    productora
+                    productora,
                 },
-                success: function(data) {
+                success: function (data) {
                     $("#respuesta").html(data);
                 },
             });
-        }
+        } 
     });
+
+    
 
     // $(document).on("click", function (e) {
     //     if (e.target.id === "btn_info_producto") {
