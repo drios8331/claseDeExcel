@@ -39,6 +39,29 @@ $(function () {
         }
     });
 
+    $(document).on("click", function(e) {
+        if (e.target.id === "btn_insertar_productora") {
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                        "content"
+                    ),
+                },
+            });
+            const productora = $("#productora").val();
+            $.ajax({
+                type: "POST",
+                url: "configuracion/create",
+                data: {
+                    productora
+                },
+                success: function(data) {
+                    $("#respuesta").html(data);
+                },
+            });
+        }
+    });
+
     // $(document).on("click", function (e) {
     //     if (e.target.id === "btn_info_producto") {
     //         $.ajaxSetup({

@@ -17,12 +17,6 @@ class ConfiguracionController extends Controller
         return view('configuracion', compact('productora', 'bodegas'));
     }
 
-    // public function viewBodega()
-    // {
-    //     $bodegas = Bodega::all();
-
-    //     return view('configuracion', compact('bodegas'));
-    // }
 
     public function createProductora(Request $request, Productora $productora, Modal $modal)
     {
@@ -34,87 +28,77 @@ class ConfiguracionController extends Controller
         } else {
             $modal->modalAlerta("text-warning", "Informacion", "Todos los campos son requeridos");
         }
+
+        // return $request->$productora
     }
 
-    public function editProductora(Request $request, Modal $modal, $infoProductora)
+    public function modalInsertarProductora(Modal $modal)
     {
-        // if (empty($request->modalInfoProductora) != 1) {
 
-        //     $productora = Productora::where('idProductora', $infoProductora)->get();
+        // $url = route('configuracion');
 
-        //     foreach ($productora as $key => $value) {
-        //         $nombreProductora = $value['nombreProductora'];
-        //     }
+        $contenidoModal = " @csrf";
+        $contenidoModal = " <div class='col-12'>";
+        $contenidoModal .= "     <div class='form-floating mb-3'>";
+        $contenidoModal .= "         <input type='text' class='form-control' id='productora' placeholder='Productora'>";
+        $contenidoModal .= "         <label for='productora'>Nombre productora</label>";
+        $contenidoModal .= "     </div>";
+        $contenidoModal .= " </div>";
+        $contenidoModal .= "<div class='d-grid'>";
+        $contenidoModal .= "<button type='submit' class='btn btn-primary' id='btn_insertar_productora'>Agregar</button>";
+        $contenidoModal .= "</div>";
 
-        //     $contenidoModal = " <table>";
-        //     $contenidoModal = " <tr>";
-        //     $contenidoModal = " <th>Nombre de la planta</th>";
-        //     $contenidoModal = " </tr>";
-        //     $contenidoModal = " <tr>";
-        //     $contenidoModal = " <td>$nombreProductora</td>";
-        //     $contenidoModal = " </tr>";
-
-            $modal->modalAlerta('text-primary', 'Informacion Empresa productora', 'Prueba');
-        // } else {
-        //     $modal->modalAlerta('text-primary', 'Informacion Empresa productora', 'Todos los campos son requeridos');
-        // }
+        $modal->modalAlerta('text-primary', 'Insertar Empresa productora de carro', $contenidoModal);
     }
 
-    public function createBodega(Request $request, Bodega $bodega, Modal $modal)
+    public function infoProductora($id, Modal $modal)
     {
-        if (empty($request->bodega) != 1) {
-            $bodega->nombreBodega = $request->bodega;
-            $bodega->ciudadBodega = $request->ciudad;
-            if ($bodega->save()) {
-                $modal->modalAlerta("text-primary", "Informacion", "informacion enviada exitosamente");
-            }
-        } else {
-            $modal->modalAlerta("text-warning", "Informacion", "Todos los campos son requeridos");
+
+        $info = Productora::where('idProductora', $id)->get();
+
+        foreach ($info as $key => $value) {
+            $nameProd = $value['nombreProductora'];
         }
+
+        $contenidoModal = " <table class='table'>";
+        $contenidoModal .= "  <thead>";
+        $contenidoModal .= "    <tr>";
+        $contenidoModal .= "      <th class='fs-5'>Nombre Empresa Productora</th>";
+        $contenidoModal .= "    </tr>";
+        $contenidoModal .= "  </thead>";
+        $contenidoModal .= "  <tbody>";
+        $contenidoModal .= "    <tr>";
+        $contenidoModal .= "      <td><b>$nameProd</b></td>";
+        $contenidoModal .= "    </tr>";
+        $contenidoModal .= "  </tbody>";
+        $contenidoModal .= "</table>";
+
+
+        $modal->modalAlerta('text-primary', 'Insertar Empresa productora de carro', $contenidoModal);
     }
 
-    public function modalInsertarProductora(Request $request, Modal $modal)
+    public function editProductora(Modal $modal, $id)
     {
+        $info = Productora::where('idProductora', $id)->get();
 
-        // $url = route('configuracion');
+        foreach ($info as $key => $value) {
+            $nameProd = $value['nombreProductora'];
+        }
 
         $contenidoModal = " @csrf";
         $contenidoModal = " <div class='col-12'>";
         $contenidoModal .= "     <div class='form-floating mb-3'>";
-        $contenidoModal .= "         <input type='text' class='form-control' id='productora' placeholder='Productora'>";
+        $contenidoModal .= "         <input type='text' class='form-control' id='productora' placeholder='Productora' value='$nameProd'>";
         $contenidoModal .= "         <label for='productora'>Nombre productora</label>";
         $contenidoModal .= "     </div>";
         $contenidoModal .= " </div>";
         $contenidoModal .= "<div class='d-grid'>";
-        $contenidoModal .= "<button type='submit' class='btn btn-primary' id='btn_insertar_productora'>Agregar</button>";
+        $contenidoModal .= "<button type='submit' class='btn btn-primary' id='btn_update_productora'>Modificar</button>";
         $contenidoModal .= "</div>";
 
         $modal->modalAlerta('text-primary', 'Insertar Empresa productora de carro', $contenidoModal);
     }
 
-    public function modalInfoProductora(Request $request, Modal $modal, $infoProductora)
-    {
-        
-    }
-
-    public function modalUpdateProductora(Modal $modal)
-    {
-
-        // $url = route('configuracion');
-
-        $contenidoModal = " @csrf";
-        $contenidoModal = " <div class='col-12'>";
-        $contenidoModal .= "     <div class='form-floating mb-3'>";
-        $contenidoModal .= "         <input type='text' class='form-control' id='productora' placeholder='Productora'>";
-        $contenidoModal .= "         <label for='productora'>Nombre productora</label>";
-        $contenidoModal .= "     </div>";
-        $contenidoModal .= " </div>";
-        $contenidoModal .= "<div class='d-grid'>";
-        $contenidoModal .= "<button type='submit' class='btn btn-primary' id='btn_insertar_productora'>Agregar</button>";
-        $contenidoModal .= "</div>";
-
-        $modal->modalAlerta('text-primary', 'Insertar Empresa productora de carro', $contenidoModal);
-    }
 
     public function modalInsertarBodega(Modal $modal)
     {
@@ -138,5 +122,74 @@ class ConfiguracionController extends Controller
         $contenidoModal .= "</div>";
 
         $modal->modalAlerta('text-primary', 'Insertar Bodega', $contenidoModal);
+    }
+    
+
+    public function createBodega(Request $request, Bodega $bodega, Modal $modal)
+    {
+        if (empty($request->bodega) != 1) {
+            $bodega->nombreBodega = $request->bodega;
+            $bodega->ciudadBodega = $request->ciudad;
+            if ($bodega->save()) {
+                $modal->modalAlerta("text-primary", "Informacion", "informacion enviada exitosamente");
+            }
+        } else {
+            $modal->modalAlerta("text-warning", "Informacion", "Todos los campos son requeridos");
+        }
+    }
+
+    public function infoBodega($idBodega, Modal $modal)
+    {
+
+        $info = Bodega::where('idBodega', $idBodega)->get();
+
+        foreach ($info as $key => $value) {
+            $nameBodega = $value['nombreBodega'];
+            $ciudadBodega = $value['ciudadBodega'];
+        }
+
+        $contenidoModal = " <table class='table'>";
+        $contenidoModal .= "  <thead>";
+        $contenidoModal .= "    <tr>";
+        $contenidoModal .= "      <th class='fs-5'>Nombre Bodega</th>";
+        $contenidoModal .= "      <th class='fs-5'>Ciudad Ubicacion</th>";
+        $contenidoModal .= "    </tr>";
+        $contenidoModal .= "  </thead>";
+        $contenidoModal .= "  <tbody>";
+        $contenidoModal .= "    <tr>";
+        $contenidoModal .= "      <td><b>$nameBodega</b></td>";
+        $contenidoModal .= "      <td><b>$ciudadBodega</b></td>";
+        $contenidoModal .= "    </tr>";
+        $contenidoModal .= "  </tbody>";
+        $contenidoModal .= "</table>";
+
+
+        $modal->modalAlerta('text-primary', 'Insertar Empresa productora de carro', $contenidoModal);
+    }
+
+    public function editBodega(Modal $modal, $idBodega)
+    {
+        $infoBodega = Bodega::where('idBodega', $idBodega)->get();
+
+        foreach ($infoBodega as $key => $value) {
+            $nameBodega = $value['nombreBodega'];
+            $ciudadBodega = $value['ciudadBodega'];
+        }
+
+        $contenidoModal = " <div class='col-12'>";
+        $contenidoModal .= "     <div class='form-floating mb-3'>";
+        $contenidoModal .= "         <input type='text' class='form-control' id='nombreBodega' placeholder='Nombre Bodega' value='$nameBodega'>";
+        $contenidoModal .= "         <label for='nombreBodega'>Nombre Bodega</label>";
+        $contenidoModal .= "     </div>";
+        $contenidoModal .= "     <div class='form-floating mb-3'>";
+        $contenidoModal .= "         <input type='text' class='form-control' id='ciudad' placeholder='Ciudad' value='$ciudadBodega'>";
+        $contenidoModal .= "         <label for='ciudad'>Ciudad</label>";
+        $contenidoModal .= "     </div>";
+        $contenidoModal .= " </div>";
+        $contenidoModal .= "<div class='d-grid'>";
+        $contenidoModal .= "<button type='submit' class='btn btn-primary' id='btn_update_bodega'>Modificar</button>";
+        $contenidoModal .= "</div>";
+
+        $modal->modalAlerta('text-primary', 'Insertar Bodegas', $contenidoModal);
     }
 }

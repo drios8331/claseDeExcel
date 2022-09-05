@@ -28,11 +28,11 @@
                                         <td class="text-center">{{ $item->idProductora }}</td>
                                         <td class="text-center">{{ $item->nombreProductora }}</td>
                                         <td class="text-center">
-                                            <button class="btn btn-outline-primary btn-sm" id="btn_info_producto"
+                                            <button class="btn btn-outline-primary btn-sm" id="btn_info_productora"
                                                 value="{{ $item->idProductora }}">
                                                 <i class="bi bi-info-square" style="pointer-events: none;"></i>
                                             </button>
-                                            <button class="btn btn-outline-primary btn-sm" id="btn_editar_producto"
+                                            <button class="btn btn-outline-primary btn-sm" id="btn_editar_productora"
                                                 value="{{ $item->idProductora }}">
                                                 <i class="bi bi-pencil-square" style="pointer-events: none;"></i>
                                             </button>
@@ -91,36 +91,13 @@
                 </div>
             </div>
         </div>
-
+        {{-- {{ route('configuracion.edit') }} --}}
     </main>
 
 @endsection
 
 @section('js')
     <script>
-        $(document).on("click", function(e) {
-            if (e.target.id === "btn_insertar_productora") {
-                $.ajaxSetup({
-                    headers: {
-                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                            "content"
-                        ),
-                    },
-                });
-                const productora = $("#productora").val();
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('configuracion/create') }}",
-                    data: {
-                        productora
-                    },
-                    success: function(data) {
-                        $("#respuesta").html(data);
-                    },
-                });
-            }
-        });
-
         $(document).on("click", function(e) {
             if (e.target.id === "btn_insertar_bodega") {
                 $.ajaxSetup({
@@ -144,7 +121,7 @@
                         // $("#modalAlerta").modal('hide');
                     },
                 });
-            } else if (e.target.id === "btn_info_producto") {
+            } else if (e.target.id === "btn_info_productora") {
                 $.ajaxSetup({
                     headers: {
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
@@ -152,13 +129,67 @@
                         ),
                     },
                 });
-                const infoProductora = e.target.value;
-                // console.log(infoProductora);
+                const idProductora = e.target.value;
                 $.ajax({
-                    type: "GET",
-                    url: "{{route('configuracion/edit')}}",
-                    data: {infoProductora: infoProductora},
+                    type: "get",
+                    url: "configuracion/" + idProductora + "/info",
+                    data: {},
                     success: function(response) {
+                        console.log(e.target.value);
+                        $("#respuesta").html(response);
+                    },
+                });
+            } else if (e.target.id === "btn_editar_productora") {
+                $.ajaxSetup({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                });
+                const idProductora = e.target.value;
+                $.ajax({
+                    type: "get",
+                    url: "configuracion/" + idProductora + "/editProductora",
+                    data: {},
+                    success: function(response) {
+                        console.log(e.target.value);
+                        $("#respuesta").html(response);
+                    },
+                });
+            } else if (e.target.id === "btn_info_bodega") {
+                $.ajaxSetup({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                });
+                const idBodega = e.target.value;
+                $.ajax({
+                    type: "get",
+                    url: "configuracion/" + idBodega + "/infoBodega",
+                    data: {},
+                    success: function(response) {
+                        console.log(e.target.value);
+                        $("#respuesta").html(response);
+                    },
+                });
+            } else if (e.target.id === "btn_editar_bodega") {
+                $.ajaxSetup({
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                });
+                const idBodega = e.target.value;
+                $.ajax({
+                    type: "get",
+                    url: "configuracion/" + idBodega + "/editBodega",
+                    data: {},
+                    success: function(response) {
+                        console.log(e.target.value);
                         $("#respuesta").html(response);
                     },
                 });
