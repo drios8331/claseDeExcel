@@ -23,7 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 
 //Carros
-Route::get('carros', [CarrosController::class, 'viewCarros'])->name('carros');
+Route::get('carros', [CarrosController::class, 'viewCarros']);
+Route::post("carro/create", [ConfiguracionController::class, 'createCarros']);
 
 //Productoras
 Route::get('configuracion', [ConfiguracionController::class, 'viewConfiguracion']);

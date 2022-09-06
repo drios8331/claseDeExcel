@@ -64,7 +64,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{Route('carros')}}">
+                            <a class="nav-link" href="carros">
                                 <span data-feather="file"></span>
                                 Carros
                             </a>

@@ -10,4 +10,5 @@ class Reserva extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = 'tblreservas';
+    protected $primaryKey = 'idReserva';
 }
