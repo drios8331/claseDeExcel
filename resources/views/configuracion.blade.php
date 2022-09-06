@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-        
+        {{-- {{"configuracion", $item->idProductora}} --}}
     </main>
 
 @endsection
@@ -99,121 +99,7 @@
 @section('js')
     <script>
         $(document).on("click", function(e) {
-            if (e.target.id === "btn_insertar_bodega") {
-                $.ajaxSetup({
-                    headers: {
-                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                            "content"
-                        ),
-                    },
-                });
-                const bodega = $("#bodega").val();
-                const ciudad = $("#ciudad").val();
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('bodega/create') }}",
-                    data: {
-                        bodega,
-                        ciudad
-                    },
-                    success: function(data) {
-                        $("#respuesta").html(data);
-                        // $("#modalAlerta").modal('hide');
-                    },
-                });
-            } else if (e.target.id === "btn_info_productora") {
-                $.ajaxSetup({
-                    headers: {
-                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                            "content"
-                        ),
-                    },
-                });
-                const idProductora = e.target.value;
-                $.ajax({
-                    type: "get",
-                    url: "configuracion/" + idProductora + "/info",
-                    data: {},
-                    success: function(response) {
-                        console.log(e.target.value);
-                        $("#respuesta").html(response);
-                    },
-                });
-            } else if (e.target.id === "btn_editar_productora") {
-                $.ajaxSetup({
-                    headers: {
-                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                            "content"
-                        ),
-                    },
-                });
-                const idProductora = e.target.value;
-                $.ajax({
-                    type: "get",
-                    url: "configuracion/" + idProductora + "/editProductora",
-                    data: {},
-                    success: function(response) {
-                        console.log(e.target.value);
-                        $("#respuesta").html(response);
-                    },
-                });
-            } else if (e.target.id === "btn_info_bodega") {
-                $.ajaxSetup({
-                    headers: {
-                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                            "content"
-                        ),
-                    },
-                });
-                const idBodega = e.target.value;
-                $.ajax({
-                    type: "get",
-                    url: "configuracion/" + idBodega + "/infoBodega",
-                    data: {},
-                    success: function(response) {
-                        console.log(e.target.value);
-                        $("#respuesta").html(response);
-                    },
-                });
-            } else if (e.target.id === "btn_editar_bodega") {
-                $.ajaxSetup({
-                    headers: {
-                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                            "content"
-                        ),
-                    },
-                });
-                const idBodega = e.target.value;
-                $.ajax({
-                    type: "get",
-                    url: "configuracion/" + idBodega + "/editBodega",
-                    data: {},
-                    success: function(response) {
-                        console.log(e.target.value);
-                        $("#respuesta").html(response);
-                    },
-                });
-            } else if (e.target.id === "btn_update_productora") {
-                $.ajaxSetup({
-                    headers: {
-                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                            "content"
-                        ),
-                    },
-                });
-                const idProductora = $("#idProductora").val();
-                const nombre = $("#productora").val();
-                $.ajax({
-                    type: "POST",
-                    url: "configuracion/" + idProductora,
-                    data: {
-                        nombre: nombre,
-                    },
-                    success: function(data) {
-                        $("#respuesta").html(data);
-                    },
-                });
-            }
+            
         });
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

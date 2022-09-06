@@ -70,7 +70,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{Route('configuracion')}}">
+                            <a class="nav-link" href="configuracion">
                                 <span data-feather="shopping-cart"></span>
                                 Configuracion
                             </a>

@@ -10,4 +10,5 @@ class Productora extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = 'tblproductoras';
+    protected $primaryKey = 'idProductora';
 }

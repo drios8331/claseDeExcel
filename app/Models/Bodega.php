@@ -10,4 +10,5 @@ class Bodega extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = 'tblbodegas';
+    protected $primaryKey = 'idBodega';
 }

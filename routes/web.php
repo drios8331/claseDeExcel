@@ -26,18 +26,19 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('carros', [CarrosController::class, 'viewCarros'])->name('carros');
 
 //Productoras
-Route::get('configuracion', [ConfiguracionController::class, 'viewConfiguracion'])->name('configuracion');
-Route::post('configuracion/modalRegistroProductora', [ConfiguracionController::class, 'modalInsertarProductora'])->name('configuracion/modalRegistroProductora');
-Route::post("configuracion/create", [ConfiguracionController::class, 'createProductora']);
-Route::get("configuracion/{id}/info", [ConfiguracionController::class, 'infoProductora']);
-Route::get("configuracion/{id}/editProductora", [ConfiguracionController::class, 'editProductora']);
-Route::post("configuracion/{idProductora}", [ConfiguracionController::class, 'UpdateProductora']);
+Route::get('configuracion', [ConfiguracionController::class, 'viewConfiguracion']);
+Route::post('produtora/modalRegistroProductora', [ConfiguracionController::class, 'modalInsertarProductora']);
+Route::post("produtora/create", [ConfiguracionController::class, 'createProductora']);
+Route::get("produtora/{id}/info", [ConfiguracionController::class, 'infoProductora']);
+Route::get("produtora/{id}/editProductora", [ConfiguracionController::class, 'editProductora']);
+Route::post('produtora/{idProd}', [ConfiguracionController::class, 'UpdateProductora']);
 
 //Bodegas
-Route::post('configuracion/modalRegistroBodega', [ConfiguracionController::class, 'modalInsertarBodega'])->name('configuracion/modalRegistroBodega');
-Route::post('bodega/create', [ConfiguracionController::class, 'createBodega'])->name('bodega/create');
-Route::get("configuracion/{idBodega}/infoBodega", [ConfiguracionController::class, 'infoBodega']);
-Route::get("configuracion/{idBodega}/editBodega", [ConfiguracionController::class, 'editBodega']);
+Route::post("bodega/modalInsertarBodega", [ConfiguracionController::class, 'modalInsertarBodega']);
+Route::post("bodega/create", [ConfiguracionController::class, 'createBodega']);
+Route::post('bodega/{idBod}', [ConfiguracionController::class, 'updateBodega']);
+Route::get("bodega/{idBodega}/infoBodega", [ConfiguracionController::class, 'infoBodega']);
+Route::get("bodega/{idBodega}/editBodega", [ConfiguracionController::class, 'editBodega']);
 
 
 //Reservas

@@ -28,28 +28,20 @@ class ConfiguracionController extends Controller
         } else {
             $modal->modalAlerta("text-warning", "Informacion", "Todos los campos son requeridos");
         }
-
-        // return $request->$productora
     }
 
-    public function updateProductora(Request $request, Productora $idProductora, Modal $modal)
+    public function updateProductora(Request $request, Productora $productora, Modal $modal, $idProd)
     {
-
-        $idProduct = Productora::where($request->idProductora);
-        return view('configuracion', compact('idProduct'));
-        // $idProduct->nombreProductora = $request->nombre;
-
-        // if ($idProductora->update()) {
-        //     $modal->modalAlerta("text-primary", "Informacion", "informacion enviada exitosamente");
-        // }
+            $productora = Productora::find($idProd);
+            $productora->nombreProductora = $request->nombre;
+            if ($productora->update()) {
+                $modal->modalAlerta("text-primary", "Informacion", "informacion enviada exitosamente");
+            }
     }
 
     public function modalInsertarProductora(Modal $modal)
     {
 
-        // $url = route('configuracion');
-
-        $contenidoModal = " @csrf";
         $contenidoModal = " <div class='col-12'>";
         $contenidoModal .= "     <div class='form-floating mb-3'>";
         $contenidoModal .= "         <input type='text' class='form-control' id='productora' placeholder='Productora'>";
@@ -101,8 +93,8 @@ class ConfiguracionController extends Controller
         $contenidoModal = " @csrf";
         $contenidoModal = " <div class='col-12'>";
         $contenidoModal .= "     <div class='form-floating mb-3'>";
-        $contenidoModal .= "         <input type='text' class='form-control' id='idProductora' value='$idProd' hidden>";
-        $contenidoModal .= "         <input type='text' class='form-control' id='productora' placeholder='Productora' value='$nameProd'>";
+        $contenidoModal .= "         <input type='text' class='form-control' id='idProductoraUpdate' value='$idProd' hidden>";
+        $contenidoModal .= "         <input type='text' class='form-control' id='productoraUpdate' placeholder='Productora' value='$nameProd'>";
         $contenidoModal .= "         <label for='productora'>Nombre productora</label>";
         $contenidoModal .= "     </div>";
         $contenidoModal .= " </div>";
@@ -116,8 +108,6 @@ class ConfiguracionController extends Controller
 
     public function modalInsertarBodega(Modal $modal)
     {
-
-        // $url = route('configuracion');
 
         $contenidoModal = " <div class='col-12'>";
         $contenidoModal .= "     <div class='form-floating mb-3'>";
@@ -186,12 +176,14 @@ class ConfiguracionController extends Controller
         $infoBodega = Bodega::where('idBodega', $idBodega)->get();
 
         foreach ($infoBodega as $key => $value) {
+            $idBodega = $value['idBodega'];
             $nameBodega = $value['nombreBodega'];
             $ciudadBodega = $value['ciudadBodega'];
         }
 
         $contenidoModal = " <div class='col-12'>";
         $contenidoModal .= "     <div class='form-floating mb-3'>";
+        $contenidoModal .= "         <input type='text' class='form-control' id='idBodega'value='$idBodega' hidden>";
         $contenidoModal .= "         <input type='text' class='form-control' id='nombreBodega' placeholder='Nombre Bodega' value='$nameBodega'>";
         $contenidoModal .= "         <label for='nombreBodega'>Nombre Bodega</label>";
         $contenidoModal .= "     </div>";
@@ -207,13 +199,14 @@ class ConfiguracionController extends Controller
         $modal->modalAlerta('text-primary', 'Insertar Bodegas', $contenidoModal);
     }
 
-    public function updateBodega(Request $request, Bodega $bodega, Modal $modal)
+    public function updateBodega(Request $request, Bodega $bodega, Modal $modal, $idBod)
     {
-        if (empty($request->bodega) != 1) {
-            $bodega->nombreBodega = $request->bodega;
-            $bodega->ciudadBodega = $request->ciudad;
-            if ($bodega->save()) {
-                $modal->modalAlerta("text-primary", "Informacion", "informacion enviada exitosamente");
+        if (empty($request->nomBod) != 1) {
+            $bodega = Bodega::find($idBod);
+            $bodega->nombreBodega = $request->nomBod;
+            $bodega->ciudadBodega = $request->ciuBod;
+            if ($bodega->update()) {
+                $modal->modalAlerta("text-primary", "Informacion", "informacion actualizada exitosamente");
             }
         } else {
             $modal->modalAlerta("text-warning", "Informacion", "Todos los campos son requeridos");
