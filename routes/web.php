@@ -5,6 +5,7 @@ use App\Http\Controllers\CarrosController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductorasController;
+use App\Http\Controllers\PruebasController;
 use App\Http\Controllers\ReservasController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 
 //home
 Route::get('/', HomeController::class)->name('home');
+
+//Pruebas
+Route::get('pruebas', [PruebasController::class, 'viewPruebas']);
 
 //Carros
 Route::get('carros', [CarrosController::class, 'viewCarros']);

@@ -20,8 +20,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <!-- Datatables-->
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" />
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script> --}}
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     @yield('css')
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
@@ -39,7 +40,9 @@
     <div class="loader-page"></div>
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 py-2 fs-4" href="#"><span><img class="img-fluid" src="{{asset('/images/RENAULT_LOGO.webp')}}" width="30" height="30" alt=""></span>&nbsp;&nbsp;<b>RENAULT</b></a>
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 py-2 fs-4" href="#"><span><img class="img-fluid"
+                    src="{{ asset('/images/RENAULT_LOGO.webp') }}" width="30" height="30"
+                    alt=""></span>&nbsp;&nbsp;<b>RENAULT</b></a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -58,7 +61,7 @@
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{Route('home')}}">
+                            <a class="nav-link" aria-current="page" href="{{ Route('home') }}">
                                 <span data-feather="home"></span>
                                 Dashboard
                             </a>
@@ -75,6 +78,12 @@
                                 Configuracion
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pruebas">
+                                <span data-feather="shopping-cart"></span>
+                                pruebas
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -89,12 +98,14 @@
 
     <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
     @yield('js')
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
         integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+    </script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
-    </script>
+    </script> --}}
 </body>
 
 </html>

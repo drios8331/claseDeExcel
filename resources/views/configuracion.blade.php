@@ -2,11 +2,6 @@
 
 @section('title', 'Configuracion')
 
-@section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-@endsection
-
 @section('content')
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3">
         <div class="row">
@@ -97,21 +92,21 @@
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
     <script>
-        $('#tableEmpresas').DataTable({
-            "lengthMenu": [
-                [5, 10, 25, 50],
-                [5, 10, 25, 50]
-            ],
-        });
-        $('#tableBodegas').DataTable({
-            "lengthMenu": [
-                [5, 10, 25, 50],
-                [5, 10, 25, 50]
-            ],
+        $(document).ready(function() {
+            $('#tableEmpresas').DataTable({
+                "lengthMenu": [
+                    [5, 10, 25, 50],
+                    [5, 10, 25, 50]
+                ],
+            });
+            $('#tableBodegas').DataTable({
+                "lengthMenu": [
+                    [5, 10, 25, 50],
+                    [5, 10, 25, 50]
+                ],
+            });
         });
     </script>
     <script src="js/scriptCrudConfiguracion.js"></script>

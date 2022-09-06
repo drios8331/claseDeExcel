@@ -8,20 +8,27 @@ $(function () {
                     ),
                 },
             });
-            // const nombreCarro = $('#nombreCarro').val();
-            // const nombreCarro = $('#nombreCarro').val();
-            // const nombreCarro = $('#nombreCarro').val();
-            // const nombreCarro = $('#nombreCarro').val();
-            // const nombreCarro = $('#nombreCarro').val();
-            // const nombreCarro = $('#nombreCarro').val();
-            // const nombreCarro = $('#nombreCarro').val();
+            const nombreCarro = $('#nombreCarro').val();
+            const plantaCarro = $('#planta').val();
+            const fechaEnsamble = $('#fechaEnsamble').val();
+            const bodegaCarro = $('#bodega').val();
+            const ciudadAlmacen = $('#ciudadAlmacenamiento').val();
+            const matriculaCarro = $('#matricula').val();
+            const modeloCarro = $('#carroModelo').val();
             $.ajax({
                 type: "POST",
                 url: "carro/create",
                 data: {
-
+                    nombreCarro: nombreCarro,
+                    plantaCarro: plantaCarro,
+                    fechaEnsamble: fechaEnsamble,
+                    bodegaCarro: bodegaCarro,
+                    ciudadAlmacen: ciudadAlmacen,
+                    matriculaCarro: matriculaCarro,
+                    modeloCarro: modeloCarro
                 },
                 success: function (response) {
+                    console.log(nombreCarro);
                     $("#respuesta").html(response);
                 },
             });
@@ -52,4 +59,5 @@ $(function () {
             ev.preventDefault();
         } 
     });
+
 });
