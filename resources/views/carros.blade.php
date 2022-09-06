@@ -22,8 +22,10 @@
                                 <div class="form-floating">
                                     <select class="form-select d-flex align-middle" id="idPlanta"
                                         aria-label="Default select example">
+                                        @foreach ($collection as $item)
                                         <option selected>--Seleccione--</option>
                                         <option value="1">One</option>
+                                        @endforeach
                                     </select>
                                     <label for="" class="ms-3">Plantas productoras</label>
                                 </div>
