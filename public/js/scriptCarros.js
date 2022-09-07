@@ -2,6 +2,7 @@ const campoBodega = document.querySelector('#bodega');
         const ciudadAlmacen = document.querySelector('#ciudadAlmacenamiento');
         const valorMatricula = document.querySelector('#matricula');
         const valorModelo = document.querySelector('#carroModelo');
+        const datoVin = document.querySelector('#vinVehiculo');
         const ArraydigitoPlaca = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'V',
             'W', 'X', 'Y', '1', '2', '3', '4', '5', '6', '7', '8', '9'
         ];
@@ -24,7 +25,7 @@ const campoBodega = document.querySelector('#bodega');
         }
 
         function arrayDato() {
-            let dato = valorMatricula.value;
+            let dato = datoVin.value;
             let valor = dato.split('');
             if (valor.length >= 17) {
                 for (let i = 9; i < 10; i++) {

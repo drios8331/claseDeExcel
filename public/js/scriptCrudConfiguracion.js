@@ -94,7 +94,7 @@ $(function () {
                 url: "produtora/" + idProductora + "/info",
                 data: {},
                 success: function (response) {
-                    console.log(e.target.value);
+                    // console.log(e.target.value);
                     $("#respuesta").html(response);
                 },
             });

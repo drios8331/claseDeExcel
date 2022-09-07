@@ -10,7 +10,17 @@
                     <div class="card-header">Registro de carros</div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <div class='form-floating mb-3'>
+                                        <input type='text' class='form-control' style="text-transform:uppercase;"
+                                            id='vinVehiculo' placeholder='VIN Vehiculo'
+                                            onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                        <label for='vinVehiculo'>VIN Vehiculo</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
                                 <div class="form-floating">
                                     <div class='form-floating mb-3'>
                                         <input type='text' class='form-control' id='nombreCarro'
@@ -32,7 +42,7 @@
                                         @endif
                                     </select>
                                     </select>
-                                    <label for="" class="ms-3">Plantas productoras</label>
+                                    <label for="">Plantas productoras</label>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -55,7 +65,7 @@
                                             @endforeach
                                         @endif
                                     </select>
-                                    <label for="" class="ms-3">Bodega</label>
+                                    <label for="">Bodega</label>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -70,7 +80,9 @@
                             <div class="col-6">
                                 <div class="form-floating">
                                     <div class='form-floating mb-3'>
-                                        <input type='text' class='form-control' id='matricula' placeholder='Matricula'>
+                                        <input type='text' class='form-control' id='matricula'
+                                            style="text-transform:uppercase;" placeholder='Matricula'
+                                            onkeyup="javascript:this.value=this.value.toUpperCase();">
                                         <label for='matricula'>Matricula</label>
                                     </div>
                                 </div>
@@ -86,6 +98,12 @@
                             <div class='d-grid'>
                                 <button type='submit' class='btn btn-primary' id='btn_insertar_carro'>Insertar</button>
                             </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="col-12">
+                            <p>El campo VIN es el numero alfanumerico de chasis del vehiculo, por favor poner los 17
+                                caracteres completos, ejemplo: 3G1SF2ZA7CS111357</p>
                         </div>
                     </div>
                 </div>
@@ -112,18 +130,18 @@
                                         <td class="text-center">{{ $item->modelo }}</td>
                                         <td class="text-center">
                                             <button class="btn btn-outline-primary btn-sm" id="btn_info_carro"
-                                                value="{{ $item->idCarro }}">
+                                                value="{{ $item->id }}">
                                                 <i class="bi bi-info-square" style="pointer-events: none;"></i>
                                             </button>
                                             <button class="btn btn-outline-primary btn-sm" id="btn_editar_carro"
-                                                value="{{ $item->idCarro }}">
+                                                value="{{ $item->id }}">
                                                 <i class="bi bi-pencil-square" style="pointer-events: none;"></i>
                                             </button>
                                         </td>
                                         <td class="text-center">
                                             <button class="btn btn-outline-primary btn-sm" id="btn_reserva_carro"
-                                                value="{{ $item->idCarro }}">
-                                                <i class="bi bi-pencil-square" style="pointer-events: none;"></i>
+                                                value="{{ $item->id }}">
+                                                <i class="bi bi-cash" style="pointer-events: none;"></i>
                                             </button>
                                         </td>
                                     </tr>
@@ -143,8 +161,8 @@
             $('#tableCarros').DataTable({
                 "responsive": true,
                 "lengthMenu": [
-                    [5, 10, 25, 50],
-                    [5, 10, 25, 50]
+                    [6, 10, 25, 50],
+                    [6, 10, 25, 50]
                 ],
             });
         });

@@ -21,14 +21,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 //home
-Route::get('/', HomeController::class)->name('home');
+Route::get('/', HomeController::class);
+
+//Reservas
+Route::get("/", [ReservasController::class, 'viewReservas']);
+Route::get("reserva/{idCarro}/modalCreate", [ReservasController::class, 'modalCreate']);
+Route::get("reserva/{idCarro}/create", [ReservasController::class, 'createReserva']);
 
 //Pruebas
 Route::get('pruebas', [PruebasController::class, 'viewPruebas']);
+Route::get('pruebas', [PruebasController::class, 'pruebas']);
 
 //Carros
 Route::get('carros', [CarrosController::class, 'viewCarros']);
-Route::post("carro/create", [ConfiguracionController::class, 'createCarros']);
+Route::post("carro/create", [CarrosController::class, 'createCarros']);
+Route::get("carro/{idVehiculo}/info", [CarrosController::class, 'infoCarros']);
+Route::get("carro/{idVehiculo}/editCarro", [CarrosController::class, 'editCarro']);
+Route::post('carro/{idCarro}', [CarrosController::class, 'UpdateCarro']);
 
 //Productoras
 Route::get('configuracion', [ConfiguracionController::class, 'viewConfiguracion']);
@@ -46,5 +55,3 @@ Route::get("bodega/{idBodega}/infoBodega", [ConfiguracionController::class, 'inf
 Route::get("bodega/{idBodega}/editBodega", [ConfiguracionController::class, 'editBodega']);
 
 
-//Reservas
-// Route::get('reservas', [ReservasController::class, 'viewReservas'])->name('reservas');
