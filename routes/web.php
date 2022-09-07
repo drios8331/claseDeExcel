@@ -21,10 +21,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 //home
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 //Reservas
-Route::get("/", [ReservasController::class, 'viewReservas']);
 Route::get("reserva/{idCarro}/modalCreate", [ReservasController::class, 'modalCreate']);
 Route::get("reserva/{idCarro}/create", [ReservasController::class, 'createReserva']);
 

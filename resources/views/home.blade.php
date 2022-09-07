@@ -27,11 +27,12 @@
                                     <th class="text-center">Estado</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
+                                {{-- {{$reserva}} --}}
                             </thead>
                             <tbody>
                                 @foreach ($reserva as $item)
                                     <tr>
-                                        {{-- <td class="text-center">{{ $item->idReserva }}</td>
+                                        <td class="text-center">{{ $item->idReserva }}</td>
                                         <td class="text-center">{{ $item->fk_Cliente }}</td>
                                         <td class="text-center">{{ $item->nombreCliente }}</td>
                                         <td class="text-center">{{ $item->fk_Carro }}</td>
@@ -41,7 +42,7 @@
                                                 value="{{ $item->idBodega }}">
                                                 <i class="bi bi-info-square" style="pointer-events: none;"></i>
                                             </button>
-                                        </td> --}}
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
