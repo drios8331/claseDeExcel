@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\BodegasController;
 use App\Http\Controllers\CarrosController;
+use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductorasController;
+use App\Http\Controllers\PruebasController;
 use App\Http\Controllers\ReservasController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,16 +23,34 @@ use Illuminate\Support\Facades\Route;
 //home
 Route::get('/', HomeController::class)->name('home');
 
+//Reservas
+Route::get("reserva/{idCarro}/modalCreate", [ReservasController::class, 'modalCreate']);
+Route::get("reserva/{idCarro}/create", [ReservasController::class, 'createReserva']);
+
+//Pruebas
+Route::get('pruebas', [PruebasController::class, 'viewPruebas']);
+Route::get('pruebas', [PruebasController::class, 'pruebas']);
+
 //Carros
-Route::get('carros', [CarrosController::class, 'viewCarros'])->name('carros');
+Route::get('carros', [CarrosController::class, 'viewCarros']);
+Route::post("carro/create", [CarrosController::class, 'createCarros']);
+Route::get("carro/{idVehiculo}/info", [CarrosController::class, 'infoCarros']);
+Route::get("carro/{idVehiculo}/editCarro", [CarrosController::class, 'editCarro']);
+Route::post('carro/{idCarro}', [CarrosController::class, 'UpdateCarro']);
 
 //Productoras
-Route::get('productoras', [ProductorasController::class, 'viewProductoras'])->name('productoras');
-Route::post('productoras', [ProductorasController::class, 'createProductoras'])->name('productoras.create');
-// Route::get("productoras/{'id'}", [ProductorasController::class, 'showProductoras'])->name('productoras.show');
+Route::get('configuracion', [ConfiguracionController::class, 'viewConfiguracion']);
+Route::post('produtora/modalRegistroProductora', [ConfiguracionController::class, 'modalInsertarProductora']);
+Route::post("produtora/create", [ConfiguracionController::class, 'createProductora']);
+Route::get("produtora/{id}/info", [ConfiguracionController::class, 'infoProductora']);
+Route::get("produtora/{id}/editProductora", [ConfiguracionController::class, 'editProductora']);
+Route::post('produtora/{idProd}', [ConfiguracionController::class, 'UpdateProductora']);
 
 //Bodegas
-Route::get('bodegas', [BodegasController::class, 'viewBodegas'])->name('bodegas');
+Route::post("bodega/modalInsertarBodega", [ConfiguracionController::class, 'modalInsertarBodega']);
+Route::post("bodega/create", [ConfiguracionController::class, 'createBodega']);
+Route::post('bodega/{idBod}', [ConfiguracionController::class, 'updateBodega']);
+Route::get("bodega/{idBodega}/infoBodega", [ConfiguracionController::class, 'infoBodega']);
+Route::get("bodega/{idBodega}/editBodega", [ConfiguracionController::class, 'editBodega']);
 
-//Reservas
-Route::get('reservas', [ReservasController::class, 'viewReservas'])->name('reservas');
+

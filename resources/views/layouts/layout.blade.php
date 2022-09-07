@@ -3,10 +3,12 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
+    <link rel="icon" href="{{ asset('/images/RENAULT_ICO_ROUND.ico') }}" />
     <title>@yield('title')</title>
 
     <!-- JQuery -->
@@ -18,8 +20,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <!-- Datatables-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" />
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    @yield('css')
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
@@ -29,8 +33,6 @@
     <!-- Our CSS -->
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
 
-    <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
 </head>
 
 <body class="">
@@ -38,7 +40,9 @@
     <div class="loader-page"></div>
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 py-2 fs-4" href="#"><span><img class="img-fluid"
+                    src="{{ asset('/images/RENAULT_LOGO.webp') }}" width="30" height="30"
+                    alt=""></span>&nbsp;&nbsp;<b>RENAULT</b></a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -63,27 +67,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{Route('reservas')}}">
-                                <span data-feather="file"></span>
-                                Reservas
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{Route('carros')}}">
+                            <a class="nav-link" href="carros">
                                 <span data-feather="file"></span>
                                 Carros
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{Route('productoras')}}">
+                            <a class="nav-link" href="configuracion">
                                 <span data-feather="shopping-cart"></span>
-                                Plantas Productoras
+                                Configuracion
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{Route('bodegas')}}">
-                                <span data-feather="users"></span>
-                                Bodegas
+                            <a class="nav-link" href="pruebas">
+                                <span data-feather="shopping-cart"></span>
+                                pruebas
                             </a>
                         </li>
                     </ul>
@@ -99,14 +97,15 @@
 
 
     <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+    @yield('js')
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
         integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+    </script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
-    </script>
-    <script src="dashboard.js"></script>
+    </script> --}}
 </body>
 
 </html>

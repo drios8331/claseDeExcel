@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductorasModel extends Model
+class Carro extends Model
 {
     use HasFactory;
-    protected $table = 'tblProductos';
+    public $timestamps = false;
+    protected $table = 'tblcarros';
+    protected $primaryKey = 'idCarro';
 }
