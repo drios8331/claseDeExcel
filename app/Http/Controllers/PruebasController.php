@@ -2,109 +2,61 @@
 
 namespace App\Http\Controllers;
 
+use App\Custom\Modal;
 use App\Models\Bodega;
+use App\Models\Carro;
+use App\Models\Cliente;
 use App\Models\Productora;
 use Illuminate\Http\Request;
 use App\Models\Pruebas;
+use App\Models\Reserva;
+use Carbon\Carbon;
 
 class PruebasController extends Controller
 {
-    
-    public function viewPruebas()
-    {
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        $idCarro = 7;
-        $documento = 1128385296;
-        $estado = 0;
 
-
-
-
-
-
-        $data = Pruebas::all();
-        $bodega = Bodega::all();
-        // return response()->json($data, 200, []);
-        // return "json";
-        return view('pruebas', compact('data', 'bodega'));
-    }
-
-    public function Pruebas()
+    public function viewPruebas(Reserva $reserva)
     {
 
-        // if (condition) {
-        //     # code...
-        // }
-        $estado = 1;
-        $fecha = date('Y-m-d');
-        $data = Pruebas::all();
-        $productora = Productora::all();
-        // return response()->json($data, 200, []);
-        // return "json";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        return view('pruebas', compact('estado', 'fecha'));
+        return view('pruebas');
     }
 
-    // public function createReserva(Request $request, Reserva $reserva, Modal $modal, $idCarro)
-    // {
-    //     // if (
-    //     //     empty($request->vinVehiculo) != 1 && empty($request->nombreCarro) != 1
-    //     //     && empty($request->plantaCarro) != 1 && empty($request->fechaEnsamble) != 1
-    //     //     && empty($request->bodegaCarro) != 1 && empty($request->modeloCarro) != 1
-    //     //     && empty($request->matriculaCarro) != 1
-    //     // ) {
-    //     $estado = 1;
-    //     $fecha = date('Y-m-d');
+    public function Pruebas(Request $request, Reserva $reservas)
+    {
 
-    //     return view('home', compact('reserva'));
+        // $documento = 1128385296;
+        
 
-    //     // $carro->vinCarro = $request->vinVehiculo;
-    //     // $carro->fk_Productora = $request->plantaCarro;
-    //     // $carro->fk_Bodega = $request->bodegaCarro;
-    //     // $carro->nombreCarro = $request->nombreCarro;
-    //     // $carro->modeloCarro = $request->modeloCarro;
-    //     // $carro->matriculaCarro = $request->matriculaCarro;
-    //     // $carro->fechaEnsamble = $request->fechaEnsamble;
-    //     // $carro->estado = $estado;
-    //     // $carro->fechaIngInventario = $fecha;
-    //     //     if ($reserva->save()) {
-    //     //         $modal->modalAlerta("text-primary", "Informacion", "Reserva creada exitosamente");
-    //     //     }
-    //     // } else {
-    //     //     $modal->modalAlerta("text-warning", "Informacion", "Todos los campos son requeridos");
-    //     // }
-    // }
+
+
+        // $carro = 9;
+        // $documento = 1128385296;
+        // $nombre = 'David Rios';
+        // $fechaHora = now();
+        // $estado = 1;
+        // $mensaje = '';
+
+        // $reservas = Reserva::all();
+        // $estado = 1;
+        // $fechaHora = Carbon::now()->subDay(1);
+        // $fecha = date('Y-m-d');
+        // $data = Pruebas::all();
+        // $productora = Productora::all();
+        // 'fechaActual', 'reserva', 'fecha', 
+
+        return view('pruebas', compact('reserva'));
+
+        // $reserva = Reserva::join('tblclientes', 'tblreservas.fk_Cliente', 'tblclientes.idClientes')
+        //     ->join('tblcarros', 'tblreservas.fk_Carro', 'tblcarros.idCarro')
+        //     ->select(
+        //         'tblcarros.idCarro as id',
+        //         'tblcarros.nombreCarro as nombre',
+        //         'tblproductoras.nombreProductora as productora',
+        //         'tblcarros.fechaEnsamble as ensamble',
+        //         'tblbodegas.nombreBodega as bodega',
+        //         'tblbodegas.ciudadBodega as ciudad',
+        //         'tblcarros.matriculaCarro as matricula',
+        //         'tblcarros.modeloCarro as modelo'
+        //     )->get();
+    }
 }

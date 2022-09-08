@@ -22,9 +22,9 @@
                                 <tr>
                                     <th class="text-center">Reserva #</th>
                                     <th class="text-center">Documento</th>
-                                    <th class="text-center">Nombre</th>
+                                    {{-- <th class="text-center">Nombre</th> --}}
                                     <th class="text-center">Vehiculo</th>
-                                    <th class="text-center">Estado</th>
+                                    {{-- <th class="text-center">Estado</th> --}}
                                     <th class="text-center">Acciones</th>
                                 </tr>
                                 {{-- {{$reserva}} --}}
@@ -32,14 +32,14 @@
                             <tbody>
                                 @foreach ($reserva as $item)
                                     <tr>
-                                        <td class="text-center">{{ $item->idReserva }}</td>
-                                        <td class="text-center">{{ $item->fk_Cliente }}</td>
-                                        <td class="text-center">{{ $item->nombreCliente }}</td>
-                                        <td class="text-center">{{ $item->fk_Carro }}</td>
-                                        <td class="text-center">{{ $item->estadoReserva }}</td>
+                                        <td class="text-center">{{ $item->id }}</td>
+                                        <td class="text-center">{{ $item->documento }}</td>
+                                        {{-- <td class="text-center">{{ $item->nombre }}</td> --}}
+                                        <td class="text-center">{{ $item->carro }}</td>
+                                        {{-- <td class="text-center">{{ $item->estado }}</td> --}}
                                         <td class="text-center">
-                                            <button class="btn btn-outline-primary btn-sm" id="btn_info_bodega"
-                                                value="{{ $item->idBodega }}">
+                                            <button class="btn btn-outline-primary btn-sm" id="btn_info_reserva"
+                                                value="{{ $item->id }}">
                                                 <i class="bi bi-info-square" style="pointer-events: none;"></i>
                                             </button>
                                         </td>

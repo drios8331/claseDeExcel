@@ -25,7 +25,9 @@ Route::get('/', HomeController::class)->name('home');
 
 //Reservas
 Route::get("reserva/{idCarro}/modalCreate", [HomeController::class, 'modalCreate']);
-// Route::get("reserva/{idCarro}/create", [HomeController::class, 'createReserva']);
+Route::post("reserva/{carro}/create", [HomeController::class, 'createReserva']);
+Route::get("reserva/{idReserva}/info", [HomeController::class, 'infoReserva']);
+Route::post("reserva/actEstado", [HomeController::class, 'actEstado']);
 
 //Pruebas
 Route::get('pruebas', [PruebasController::class, 'viewPruebas']);

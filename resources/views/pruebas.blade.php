@@ -18,8 +18,13 @@
                 </div>
             </div>
         </div>
-        {{$estado}}
-        {{$fecha}}
+        {{-- {{$fecha}}<br> --}}
+        {{-- {{$fechaActual}}<br> --}}
+        {{-- {{$fechaActual}}<br> --}}
+        {{-- {{$fechaAnterior}}<br> --}}
+        {{-- {{$mensaje}}<br> --}}
+        {{-- {{$mensajeLimite}}<br> --}}
+        {{$reserva}}<br>
     </main>
 @endsection
 

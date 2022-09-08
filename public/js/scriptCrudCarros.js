@@ -119,17 +119,34 @@ $(function () {
                     ),
                 },
             });
-            const idCarro = $("#idCarro").val();
+            const carro = $("#idCarro").val();
             const documento = $("#documento").val();
             const nombre = $("#nombre").val();
             $.ajax({
                 type: "POST",
-                url: "reserva/" + idCarro + "/create",
+                url: "reserva/" + carro + "/create",
                 data: {
-                    idCarro: idCarro,
+                    carro: carro,
                     documento: documento,
-                    nombre: nombre
+                    nombre: nombre,
                 },
+                success: function (data) {
+                    $("#respuesta").html(data);
+                },
+            });
+        } else if (e.target.id === "btn_info_reserva") {
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                        "content"
+                    ),
+                },
+            });
+            const idReserva = e.target.value;
+            $.ajax({
+                type: "GET",
+                url: "reserva/" + idReserva + "/info",
+                data: {},
                 success: function (data) {
                     $("#respuesta").html(data);
                 },
