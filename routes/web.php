@@ -24,8 +24,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 
 //Reservas
-Route::get("reserva/{idCarro}/modalCreate", [ReservasController::class, 'modalCreate']);
-Route::get("reserva/{idCarro}/create", [ReservasController::class, 'createReserva']);
+Route::get("reserva/{idCarro}/modalCreate", [HomeController::class, 'modalCreate']);
+// Route::get("reserva/{idCarro}/create", [HomeController::class, 'createReserva']);
 
 //Pruebas
 Route::get('pruebas', [PruebasController::class, 'viewPruebas']);
