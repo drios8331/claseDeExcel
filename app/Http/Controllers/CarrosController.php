@@ -73,7 +73,6 @@ class CarrosController extends Controller
                 'tblbodegas.ciudadBodega as ciudad',
                 'tblcarros.matriculaCarro as matricula',
                 'tblcarros.modeloCarro as modelo',
-                'tblcarros.estado as estado',
                 'tblcarros.fechaIngInventario as inventario'
             )->Where('idCarro', $idVehiculo)->get();
         // $info = Carro::where('idCarro', $id)->get();
