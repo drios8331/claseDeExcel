@@ -33,6 +33,11 @@
     <!-- Our CSS -->
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
 
+    {{-- calendar --}}
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/locales-all.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script> --}}
 </head>
 
 <body class="">
