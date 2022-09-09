@@ -151,4 +151,10 @@ class HomeController extends Controller
             }
         }
     }
+
+    public function show(Reserva $reserva)
+    {
+        $reserva = Reserva::where('estadoReserva', 1)->get();
+        return response()->json($reserva);
+    }
 }
