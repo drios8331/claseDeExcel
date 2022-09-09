@@ -29,6 +29,9 @@ Route::post("reserva/{carro}/create", [HomeController::class, 'createReserva']);
 Route::get("reserva/{idReserva}/info", [HomeController::class, 'infoReserva']);
 Route::get("reserva/actEstado", [HomeController::class, 'actEstado']);
 
+//Calendario
+Route::get("reserva/mostrar", [HomeController::class, 'show']);
+
 //Pruebas
 Route::get('pruebas', [PruebasController::class, 'viewPruebas']);
 Route::get('pruebas', [PruebasController::class, 'pruebas']);
