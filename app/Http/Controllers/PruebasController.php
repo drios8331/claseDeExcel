@@ -23,10 +23,22 @@ class PruebasController extends Controller
     public function Pruebas(Request $request, Reserva $reservas)
     {
 
-        $reserva = Reserva::where('')->count();
+        $reserva = Reserva::where('estadoReserva', 1)->get();
 
+        $fechaRes = null;
+        foreach ($reserva as $key => $value) {
+            if ($reserva != null) {
+                $fechaRes[] = $value['fechaHoraReserva']; 
+            }
+        }
 
-        return view('pruebas', compact('reserva'));
+        // gettype();
+
+        $variable = json_encode($fechaRes);
+
+        
+
+        return view('pruebas', compact('variable'));
 
     }
 }

@@ -48,11 +48,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="card-footer p-0">
-                        <div class="d-grid">
-                            <button class="btn btn-primary" id="insertar_bodega">Agregar </button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -74,7 +69,6 @@
     </script>
     <script src="js/calendario.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/scriptCarros.js"></script>
     <script src="js/scriptCrudCarros.js"></script>
 
 @endsection
