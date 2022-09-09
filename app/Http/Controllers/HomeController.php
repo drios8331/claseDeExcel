@@ -144,7 +144,7 @@ class HomeController extends Controller
             $reservas = Reserva::find($idReserva);
             $fechaRegistro = Carbon::parse($fecha);
             $fechaAnterior = $fechaRegistro->addDay(1);
-            $fechaActual = now()->addDay(2);
+            $fechaActual = now()->addDay(1);
             if ($fechaActual >= $fechaAnterior) {
                 $reservas->estadoReserva = 0;
                 $reservas->save();

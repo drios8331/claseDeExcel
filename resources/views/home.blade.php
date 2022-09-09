@@ -72,6 +72,7 @@
             });
         });
     </script>
+    <script src="js/script.js"></script>
     <script src="js/scriptCarros.js"></script>
     <script src="js/scriptCrudCarros.js"></script>
 
