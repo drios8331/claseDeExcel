@@ -82,7 +82,7 @@
                                     <div class='form-floating mb-3'>
                                         <input type='text' class='form-control' id='matricula'
                                             style="text-transform:uppercase;" placeholder='Matricula'
-                                            onkeyup="javascript:this.value=this.value.toUpperCase();" disabled="true">
+                                            onkeyup="javascript:this.value=this.value.toUpperCase();" disabled>
                                         <label for='matricula'>Matricula</label>
                                     </div>
                                 </div>
@@ -168,7 +168,7 @@
         });
     </script>
     <script src="js/script.js"></script>
-    <script src="js/scriptCarros.js"></script>
+    <script src="js/scriptCarros.js"></script>  
     <script src="js/scriptCrudCarros.js"></script>
 
 @endsection

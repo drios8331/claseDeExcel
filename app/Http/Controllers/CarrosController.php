@@ -8,6 +8,7 @@ use App\Models\Bodega;
 use App\Models\Productora;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
+use PDOException;
 
 class CarrosController extends Controller
 {
@@ -35,26 +36,31 @@ class CarrosController extends Controller
 
     public function createCarros(Request $request, Carro $carro, Modal $modal)
     {
-        if (
-            empty($request->vinVehiculo) != 1 && empty($request->nombreCarro) != 1
-            && empty($request->plantaCarro) != 1 && empty($request->fechaEnsamble) != 1
-            && empty($request->bodegaCarro) != 1 && empty($request->modeloCarro) != 1
-            && empty($request->matriculaCarro) != 1
-        ) {
-            $fecha = date('Y-m-d');
-            $carro->vinCarro = $request->vinVehiculo;
-            $carro->fk_Productora = $request->plantaCarro;
-            $carro->fk_Bodega = $request->bodegaCarro;
-            $carro->nombreCarro = $request->nombreCarro;
-            $carro->modeloCarro = $request->modeloCarro;
-            $carro->matriculaCarro = $request->matriculaCarro;
-            $carro->fechaEnsamble = $request->fechaEnsamble;
-            $carro->fechaIngInventario = $fecha;
-            if ($carro->save()) {
-                $modal->modalAlerta("text-primary", "Informacion", "informacion enviada exitosamente");
+        try {
+
+            if (
+                empty($request->vinVehiculo) != 1 && empty($request->nombreCarro) != 1
+                && empty($request->plantaCarro) != 1 && empty($request->fechaEnsamble) != 1
+                && empty($request->bodegaCarro) != 1 && empty($request->modeloCarro) != 1
+                && empty($request->matriculaCarro) != 1
+            ) {
+                $fecha = date('Y-m-d');
+                $carro->vinCarro = $request->vinVehiculo;
+                $carro->fk_Productora = $request->plantaCarro;
+                $carro->fk_Bodega = $request->bodegaCarro;
+                $carro->nombreCarro = $request->nombreCarro;
+                $carro->modeloCarro = $request->modeloCarro;
+                $carro->matriculaCarro = $request->matriculaCarro;
+                $carro->fechaEnsamble = $request->fechaEnsamble;
+                $carro->fechaIngInventario = $fecha;
+                if ($carro->save()) {
+                    $modal->modalAlerta("text-primary", "Informacion", "informacion enviada exitosamente");
+                }
+            } else {
+                $modal->modalAlerta("text-warning", "Informacion", "Todos los campos son requeridos");
             }
-        } else {
-            $modal->modalAlerta("text-warning", "Informacion", "Todos los campos son requeridos");
+        } catch (PDOException $e) {
+            $modal->modalAlerta("text-warning", "Informacion", "El codigo VIN del vehiculo es unico, ya en el sistema se encuentra registrado u numero igual al que desea registrar.");
         }
     }
 
@@ -101,7 +107,7 @@ class CarrosController extends Controller
         $contenidoModal .=  "    <li class='list-group-item lp'><b>Fecha de ensamblaje</b>: $fechaEnsamble</li>";
         $contenidoModal .=  "    <li class='list-group-item lp'><b>Fecha de ingreso a inventario</b>: $fechaInventario</li>";
         $contenidoModal .=  "</ul>";
-        
+
         $modal->modalAlerta('text-primary', 'Informacion del vehiculo', $contenidoModal);
     }
 
@@ -135,11 +141,11 @@ class CarrosController extends Controller
 
     public function updateCarro(Request $request, Carro $carro, Modal $modal, $idCarro)
     {
-            $carro = Carro::find($idCarro);
-            $carro->modeloCarro = $request->modeloCarro;
-            $carro->fechaEnsamble = $request->fechaEnsamble;
-            if ($carro->update()) {
-                $modal->modalAlerta("text-primary", "Informacion", "informacion modificada exitosamente");
-            }
+        $carro = Carro::find($idCarro);
+        $carro->modeloCarro = $request->modeloCarro;
+        $carro->fechaEnsamble = $request->fechaEnsamble;
+        if ($carro->update()) {
+            $modal->modalAlerta("text-primary", "Informacion", "informacion modificada exitosamente");
+        }
     }
 }

@@ -67,10 +67,18 @@ function arrayDato() {
 
 function habilitarMatricula() {
     const datoV = datoVin.value;
-    if (datoV.length >= 17) {
-        valorMatricula.disable = "false";
+    if (datoV.length === 17) {
+        valorMatricula.disabled = false;
+    } else {
+        valorMatricula.disabled = true;
+        const cardFooter = document.querySelector(".card-footer");
+        cardFooter.classList.add("bg-danger", "text-light");
+        setTimeout(() => {
+            const cardFooter = document.querySelector(".card-footer");
+            cardFooter.classList.remove("bg-danger", "text-light");
+        }, 3000);
     }
-    console.log(datoV.length);
+    // console.log(datoV.length);
 }
 
 function rangoFecha(digitoVin) {
