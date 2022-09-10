@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         right: 'dayGridMont,timeGridWeek,listWeek'
       },
       events: "http://localhost/claseDeExcel/public/reserva/mostrar",
+      displayEventTime: false
     });
     calendar.render();
   });

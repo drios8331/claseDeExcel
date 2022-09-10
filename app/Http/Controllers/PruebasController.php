@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Custom\Modal;
-use App\Models\Bodega;
-use App\Models\Carro;
-use App\Models\Cliente;
-use App\Models\Productora;
 use Illuminate\Http\Request;
-use App\Models\Pruebas;
 use App\Models\Reserva;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class PruebasController extends Controller
 {
@@ -23,22 +17,13 @@ class PruebasController extends Controller
     public function Pruebas(Request $request, Reserva $reservas)
     {
 
-        $reserva = Reserva::where('estadoReserva', 1)->get();
+        // $sql = 'SELECT idReserva, COUNT(idReserva), DATE_FORMAT(fechaHoraReserva, "%d-%m-%Y"), start, end FROM tblreservas WHERE estadoReserva = 1 GROUP BY DATE_FORMAT(fechaHoraReserva, "%d-%m-%Y")';
+        DB::statement("SET SQL_MODE=''");
+        $reserva = Reserva::selectRaw('idReserva, COUNT(idReserva) as cantidad, DATE_FORMAT(fechaHoraReserva, "%d-%m-%Y") as fecha, start, end')->where('estadoReserva', 1)->groupBy('fecha')->get();
 
-        $fechaRes = null;
-        foreach ($reserva as $key => $value) {
-            if ($reserva != null) {
-                $fechaRes[] = $value['fechaHoraReserva']; 
-            }
-        }
+  
 
-        // gettype();
-
-        $variable = json_encode($fechaRes);
-
-        
-
-        return view('pruebas', compact('variable'));
+        return view('pruebas', compact('reserva'));
 
     }
 }

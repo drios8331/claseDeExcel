@@ -18,28 +18,31 @@
                 </div>
             </div>
         </div>
+
+        {{-- const data = '{!! $variable !!}'; --}}
+
         {{-- {{$fecha}}<br> --}}
         {{-- {{$fechaActual}}<br> --}}
         {{-- {{$fechaActual}}<br> --}}
         {{-- {{$fechaAnterior}}<br> --}}
         {{-- {{$mensaje}}<br> --}}
         {{-- {{$mensajeLimite}}<br> --}}
-        {{-- {{$variable}}<br> --}}
+        
+        {{$reserva}}<br>
     </main>
 @endsection
 
 @section('js')
     <script>
-        const data = '{!! $variable !!}';
-        const fechaActual = new Date();
-        var mes = fechaActual.getMonth()+1;
+        // const fechaActual = new Date();
+        // var mes = fechaActual.getMonth()+1;
 
         
 
 
 
-        console.log(mes);
-        console.log(JSON.parse(data));
+        // console.log(mes);
+        // console.log(JSON.parse(data));
 
     </script>
 @endsection

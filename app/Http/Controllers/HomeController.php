@@ -7,6 +7,7 @@ use App\Models\Cliente;
 use App\Models\Reserva;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -154,7 +155,9 @@ class HomeController extends Controller
 
     public function show(Reserva $reserva)
     {
-        $reserva = Reserva::where('estadoReserva', 1)->get();
+        DB::statement("SET SQL_MODE=''");
+        $reserva = Reserva::selectRaw('COUNT(idReserva) as title, DATE_FORMAT(fechaHoraReserva, "%d-%m-%Y") as fecha, start')->where('estadoReserva', 1)->groupBy('fecha')->get();
+
         return response()->json($reserva);
     }
 }
